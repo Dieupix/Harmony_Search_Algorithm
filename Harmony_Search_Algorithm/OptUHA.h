@@ -39,8 +39,8 @@ protected :
 	solution GenerateNewSolution(int current_ind_idx);
 	void check_bound_pop(vector<solution>& population);
 
-	OptUHA();
-	~OptUHA();
+	OptUHA() = default;
+	~OptUHA() = default;
 };
 
 #endif

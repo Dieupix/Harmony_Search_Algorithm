@@ -3,6 +3,7 @@
 
 #include <iostream>
 #include <vector>
+#include <time.h>
 #include "myAlgorithm.h"
 #include "OptUHA.h"
 
@@ -16,7 +17,7 @@ int main()
     {
         for (int run = 0; run < num_runs; run++)
         {
-            myAlgorithm* myAlgo = new myAlgorithm();
+            harmonySearch* myAlgo = new harmonySearch();
             double fitness = myAlgo->solve(func + 1);
             obj_vals_array[func].push_back(fitness);
             cout << "function: " << func << " obj_val: " << fitness << endl;

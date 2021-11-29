@@ -20,8 +20,8 @@ protected:
 	void update_fitness(int idx, double fitness_val);
 public:
 	double solve(int func_num);
-	harmonySearch( );  // mettre un constructeur avec des paramètres ici
-	~harmonySearch();
+	harmonySearch( ) = default;  // mettre un constructeur avec des paramètres ici
+	~harmonySearch() = default;
 
 
 	// Ajouter d'autres fonctions liées à votre algorithme ici
