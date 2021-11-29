@@ -10,7 +10,7 @@ int main()
 {
     srand((unsigned)time(NULL));
     int num_runs = 10;
-    int num_funcs = 12; 
+    int num_funcs = 12;
     vector<vector<double>> obj_vals_array(num_funcs);
     for (int func = 0; func < num_funcs; func++)
     {
@@ -24,6 +24,6 @@ int main()
                 delete myAlgo; myAlgo = NULL;
         }
     }
-
+    //TEST
 }
 
