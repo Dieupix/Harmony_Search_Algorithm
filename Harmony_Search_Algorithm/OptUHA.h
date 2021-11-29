@@ -9,11 +9,13 @@ using namespace std;
 typedef double indType;
 typedef indType* solution;
 
+
+
 class OptUHA
 {
 protected:
-	size_t								pop_size = 10; // taille de la population
-	size_t								dimension = 2; // dimension du problème
+	size_t								pop_size = 30; // taille de la population
+	size_t								dimension = 30 ; // dimension du problème
 	size_t								total_func_evals = 2500; // nombre total d'évaluation
 	size_t								max_func_eval = total_func_evals * pop_size; // nombre total d'appel de la fonction objectif
 	bool								optimization_mode = 0; // 0 = min; 1 = max;
@@ -32,7 +34,7 @@ protected :
 	vector<solution> GenerateRandomPop();
 	double generate_random_double();
 	int generate_random_int(int from, int to);
-	solution create_new_individual();
+	solution create_new_solution();
 	void print_solution(double* indv, double fitness);
 	solution GenerateNewSolution(int current_ind_idx);
 	void check_bound_pop(vector<solution>& population);
