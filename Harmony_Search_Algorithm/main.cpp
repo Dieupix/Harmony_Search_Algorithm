@@ -24,6 +24,5 @@ int main()
                 delete myAlgo; myAlgo = NULL;
         }
     }
-    //TEST
 }
 
