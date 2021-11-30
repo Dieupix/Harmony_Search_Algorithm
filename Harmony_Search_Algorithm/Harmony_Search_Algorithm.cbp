@@ -32,9 +32,13 @@
 			<Add option="-Wall" />
 			<Add option="-fexceptions" />
 		</Compiler>
+		<Unit filename="OptUHA.cpp" />
 		<Unit filename="OptUHA.h" />
 		<Unit filename="main.cpp" />
+		<Unit filename="myAlgorithm.cpp" />
 		<Unit filename="myAlgorithm.h" />
+		<Unit filename="objective_func.cpp" />
+		<Unit filename="objective_func.h" />
 		<Extensions>
 			<DoxyBlocks>
 				<comment_style block="0" line="0" />
