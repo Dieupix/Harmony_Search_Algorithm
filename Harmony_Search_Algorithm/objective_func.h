@@ -6,4 +6,6 @@
 ///@TODO : [Mathis] fonction Shifted Rastrigin (voir la formule)
 ///@TODO : [Alexandre] fonction Shifted Griewank (voir la formule)
 
+double shifted_Griewank_func(double x);
+
 #endif // OBJECTIVE_FUNC_H_INCLUDED
