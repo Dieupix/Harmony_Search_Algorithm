@@ -48,4 +48,8 @@ double harmonySearch::solve(int func_num)
         return 0.0;
 }
 
+void harmonySearch::update_fitness(int idx, double fitness_val)
+{
+    fitness[idx] = fitness_val;
+}
 
