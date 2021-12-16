@@ -45,4 +45,14 @@ double OptUHA::generate_random_double(double from, double to)
 }
 
 
+void OptUHA::print_solution(const solution& sol, double fitness)
+{
+    for(auto s : sol)
+    {
+        cout << "- " << s << endl;
+    }
+    cout << "FITNESS: " << fitness << endl;
+}
+
+
 

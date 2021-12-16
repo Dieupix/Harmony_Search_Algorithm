@@ -77,7 +77,7 @@ protected :
      *
      */
      ///@TODO : [Alexandre]
-	void print_solution(solution* sol, double fitness);
+	void print_solution(const solution& sol, double fitness);
 
     /** @brief Genere une nouvelle solution
      *          A utiliser : generate_random_double()
