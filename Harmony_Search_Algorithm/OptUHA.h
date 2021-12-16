@@ -83,7 +83,7 @@ protected :
      *
      */
      ///@TODO : [Manu]
-	solution GenerateNewSolution(int current_ind_idx);
+	solution GenerateNewSolution();
 
     /** @brief Gere l'ajout ou non d'une nouvelle harmonie (ETAPE 3)
      *
@@ -94,7 +94,7 @@ protected :
      ///@TODO : [Meriem]
 	void check_bound_pop(vector<solution>& population);
 
-	///@TODO : [] constructeur
+	///@TODO : [Alexandre] constructeur
 	OptUHA() = default;
 
 	~OptUHA() = default;
