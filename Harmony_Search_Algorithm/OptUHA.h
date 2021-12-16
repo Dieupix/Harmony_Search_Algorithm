@@ -36,6 +36,7 @@ protected :
      *          A utiliser : GenerateNewSolution()
      * @return vector<solution> : un tableau de solutions, c'est a dire, un tableau contenant toutes les harmonies.
      */
+     ///@TODO : [Meriem]
 	vector<solution> GenerateRandomPop();
 
     /** @brief Genere un reel aleatoire. On s'en servira pour generer une frequence au hasard et une probabilite p
@@ -44,6 +45,7 @@ protected :
      * @return double : le reel
      *
      */
+     ///@TODO : [Mathis]
 	double generate_random_double(double from, double to);
 
     /** @brief
@@ -53,6 +55,7 @@ protected :
      * @return int
      *
      */
+     ///@TODO : [Mathis]
 	int generate_random_int(int from, int to);
 
     /** @brief Cree un nouvel individu vide, c'est a dire une solution vide. Cela correspond a notre X de depart.
@@ -60,6 +63,7 @@ protected :
      * @return solution : notre nouvelle solution vide (a ajouter ou non a la population selon son evaluation)
      *
      */
+     ///@TODO : [Manu]
 	solution create_new_solution(int n);
 
     /** @brief Imprime une solution
@@ -69,6 +73,7 @@ protected :
      * @return void
      *
      */
+     ///@TODO : [Alexandre]
 	void print_solution(solution* sol, double fitness);
 
     /** @brief Genere une nouvelle solution
@@ -77,6 +82,7 @@ protected :
      * @return solution
      *
      */
+     ///@TODO : [Manu]
 	solution GenerateNewSolution(int current_ind_idx);
 
     /** @brief Gere l'ajout ou non d'une nouvelle harmonie (ETAPE 3)
@@ -85,9 +91,12 @@ protected :
      * @return void
      *
      */
+     ///@TODO : [Meriem]
 	void check_bound_pop(vector<solution>& population);
 
+	///@TODO : [] constructeur
 	OptUHA() = default;
+
 	~OptUHA() = default;
 };
 
