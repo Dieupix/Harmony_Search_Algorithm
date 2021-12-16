@@ -14,8 +14,8 @@ protected:
     double critere = pow(10,-16);
     bool CA = false; //critère d'arret f(x) < 10^-16
     double PAR; //taux de réglage de la hauteur, la probabilite de modifier la frequence selectionnee
-    int nbIterations = 0; //nombre d'iterations deja effectuees
-    int nBIterationsTotales = 30;
+    unsigned nbIterations = 0; //nombre d'iterations deja effectuees
+    unsigned nbIterationsTotales = 30;
 	vector<solution> population;
 
 

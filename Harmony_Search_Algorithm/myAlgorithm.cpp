@@ -8,7 +8,7 @@ void harmonySearch::run(int func_num)
 {
     population = GenerateRandomPop();
     //evaluate_pop(func_num);
-    while(nbIterations < nBIterationsTotales && !CA)
+    while(nbIterations < nbIterationsTotales && !CA)
     {
         solution X = create_new_solution(n);
         for(int j{0} ; j < X.size() ; ++j)
@@ -31,7 +31,7 @@ void harmonySearch::run(int func_num)
         {
             UpdatePopulation(func_num,ind_worst,X);
         }*/
-        nbIterations++;
+        ++nbIterations;
     }
 }
 
@@ -39,13 +39,13 @@ void harmonySearch::run(int func_num)
 
 double harmonySearch::solve(int func_num)
 {
-    /*solution* sol(dimension);
-    for(int i{0} ; i<NbIterationsTotales;++i)
-        {
-            run(func_num);
-            print_solution(&population[best], fitness[best]);
-        }*/
-        return 0.0;
+    solution sol(dimension);
+    for(unsigned i = 0; i < nbIterationsTotales; ++i)
+    {
+        run(func_num);
+        print_solution(population[best], fitness[best]);
+    }
+    return fitness[best];
 }
 
 void harmonySearch::update_fitness(int idx, double fitness_val)
