@@ -9,8 +9,7 @@
 
 int main()
 {
-    srand((unsigned)time(NULL));
-    //Ajoute :
+    srand(time(NULL));
     double hmcr = 0;
     double par = 0;
     //

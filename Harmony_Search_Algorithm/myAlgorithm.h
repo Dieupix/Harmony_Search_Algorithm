@@ -32,7 +32,7 @@ protected:
     int FindWorstSolution(); ///@TODO : [Meriem] cherche la pire solution dans fitness (a utiliser : UpdatePopulation())
     void run(int func_num); ///@TODO : [les 4] l'algo en soit
 public:
-	void solve(int func_num); ///@TODO : [Alexandre] renvoie la meilleure valeur trouvee par l'algo par rapport a la fonction
+	double solve(int func_num); ///@TODO : [Alexandre] renvoie la meilleure valeur trouvee par l'algo par rapport a la fonction
 	harmonySearch(double hmcr, double par);///@TODO : [Alexandre] constructeur
 	~harmonySearch() = default;
 
