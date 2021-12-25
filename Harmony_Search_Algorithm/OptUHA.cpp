@@ -14,10 +14,32 @@ vector<solution> OptUHA::GenerateRandomPop()
 
 }
 
+double OptUHA::generate_random_double(double from, double to)
+{
+    double nRand ;
+    nRand = from + (double)rand() / (double)(RAND_MAX / (to - from));
+    return nRand;
+}
+
+int OptUHA::generate_random_int(int from, int to)
+{
+    int nRand;
+    nRand = rand() % (to - from + 1) + from;
+    return nRand;
+}
 
 solution OptUHA::create_new_solution(int n)
 {
     return solution{n};
+}
+
+void OptUHA::print_solution(const solution& sol, double fitness)
+{
+    for(auto s : sol)
+    {
+        cout << "- " << s << endl;
+    }
+    cout << "FITNESS: " << fitness << endl;
 }
 
 solution OptUHA::GenerateNewSolution()
@@ -30,28 +52,13 @@ solution OptUHA::GenerateNewSolution()
     return ns;
 }
 
-int OptUHA::generate_random_int(int from, int to)
+void OptUHA::check_bound_pop(vector<solution>& population)
 {
-    int nRand;
-    nRand = rand() % (to - from + 1) + from;
-    return nRand;
+
 }
 
-double OptUHA::generate_random_double(double from, double to)
-{
-    double nRand ;
-    nRand = from + (double)rand() / (double)(RAND_MAX / (to - from));
-    return nRand;
-}
 
-void OptUHA::print_solution(const solution& sol, double fitness)
-{
-    for(auto s : sol)
-    {
-        cout << "- " << s << endl;
-    }
-    cout << "FITNESS: " << fitness << endl;
-}
+
 
 
 

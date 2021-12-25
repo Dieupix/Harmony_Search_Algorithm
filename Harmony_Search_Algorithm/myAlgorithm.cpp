@@ -4,6 +4,52 @@
 harmonySearch::harmonySearch(double hmcr, double par) : HMCR{hmcr}, PAR{par}
 {}
 
+
+void harmonySearch::UpdatePopulation
+(int func_num, int idx, solution new_sol)
+{
+
+}
+int harmonySearch::FindBestSolution()
+{
+     int bestSolution = 0 ;
+     for( int i = 1 ; i< fitness.size(); i++ )
+     {
+         if( fitness[bestSolution] < fitness[i])
+            bestSolution = i;
+     }
+    return bestSolution ;
+}
+
+void harmonySearch::evaluate_pop(int func_num)
+{
+
+}
+
+double harmonySearch::evaluate_solution(int func_num, solution sol)
+{
+
+}
+
+void harmonySearch::update_fitness(int idx, double fitness_val)
+{
+    fitness[idx] = fitness_val;
+}
+double harmonySearch::mute(double val)
+{
+
+}
+ int harmonySearch::FindWorstSolution()
+ {
+     int worst = 0 ;
+     for( int i = 1 ; i< fitness.size(); i++ )
+     {
+         if( fitness[worst] > fitness[i])
+            worst = i;
+     }
+    return worst ;
+ }
+
 void harmonySearch::run(int func_num)
 {
     population = GenerateRandomPop();
@@ -46,10 +92,5 @@ double harmonySearch::solve(int func_num)
         print_solution(population[best], fitness[best]);
     }
     return fitness[best];
-}
-
-void harmonySearch::update_fitness(int idx, double fitness_val)
-{
-    fitness[idx] = fitness_val;
 }
 
