@@ -25,8 +25,8 @@ protected:
 	void evaluate_pop(int func_num); ///@TODO : [Mathis] evalue la population par rapport a la fonction
 	double evaluate_solution(int func_num, solution sol); ///@TODO : [Mathis] evalue une harmonie par rapport a la fonction
 	void update_fitness(int idx, double fitness_val); ///@TODO : [Alexandre] met a jour le tableau fitness
-    double mute(double val); ///@TODO : [Manu] mute val
-
+    //double mute(double val); ///@TODO : [Manu] mute val
+    double mute(); ///@TODO : [Manu] mute
 
     //Ce qu'on a ajoute
     int FindWorstSolution(); ///@TODO : [Meriem] cherche la pire solution dans fitness (a utiliser : UpdatePopulation())

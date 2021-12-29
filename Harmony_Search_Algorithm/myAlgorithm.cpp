@@ -5,11 +5,12 @@ harmonySearch::harmonySearch(double hmcr, double par) : HMCR{hmcr}, PAR{par}
 {}
 
 
-void harmonySearch::UpdatePopulation
-(int func_num, int idx, solution new_sol)
+void harmonySearch::UpdatePopulation(int func_num, int idx, solution new_sol)
 {
-
+    population[idx] = new_sol;
+    update_fitness(idx,evaluate_solution(func_num,new_sol));
 }
+
 int harmonySearch::FindBestSolution()
 {
      int bestSolution = 0 ;
@@ -35,9 +36,9 @@ void harmonySearch::update_fitness(int idx, double fitness_val)
 {
     fitness[idx] = fitness_val;
 }
-double harmonySearch::mute(double val)
+double harmonySearch::mute()
 {
-
+    return generate_random_double(20.0,20000.0);
 }
  int harmonySearch::FindWorstSolution()
  {
@@ -64,19 +65,19 @@ void harmonySearch::run(int func_num)
                     double val = population[generate_random_int(0,HMS)][j];
                     if(generate_random_double(0.0,1.0) < PAR)
                     {
-                        //mute(val);
+                        val = mute();
                     }
                     X[j] = val;
                 }
                 else X[j] = generate_random_double(20.0,20000.0);
             }
-        //double fX = evaluate_solution(func_num,X);
-        //CA = fX < critere;
-        /*int ind_worst = FindWorstSolution();
+        double fX = evaluate_solution(func_num,X);
+        CA = fX < critere;
+        int ind_worst = FindWorstSolution();
         if(fX > fitness[ind_worst])
         {
             UpdatePopulation(func_num,ind_worst,X);
-        }*/
+        }
         ++nbIterations;
     }
 }

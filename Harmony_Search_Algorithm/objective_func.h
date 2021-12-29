@@ -6,9 +6,10 @@
 ///@TODO : [Manu] fonction Shifted Rosenbrock (voir la formule)
 ///@TODO : [Mathis] fonction Shifted Rastrigin (voir la formule)
 ///@TODO : [Alexandre] fonction Shifted Griewank (voir la formule)
-
+///@TODO : Enumerer les 4 fonctions de 1 à 4
 
 double schifed_Sphere_func(const solution x) ;
+double shifted_Rosenbrock_func(const solution& x);
 double shifted_Griewank_func(double x);
 
 #endif // OBJECTIVE_FUNC_H_INCLUDED

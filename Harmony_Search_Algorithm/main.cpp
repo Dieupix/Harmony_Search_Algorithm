@@ -30,3 +30,18 @@ int main()
     }
 }
 
+
+
+/* Test fonction
+int main()
+{
+    double x = 2.0;
+    solution sol;
+    for(int i=0 ; i<10 ;++i)
+    {
+        sol.push_back(x*i);
+    }
+    double fct = shifted_Rosenbrock_func(sol);
+    cout<<fct<<endl;
+}
+*/
