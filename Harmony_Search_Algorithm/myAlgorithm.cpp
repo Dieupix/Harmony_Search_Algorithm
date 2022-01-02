@@ -2,7 +2,9 @@
 #include "OptUHA.h"
 
 harmonySearch::harmonySearch(double hmcr, double par) : HMCR{hmcr}, PAR{par}
-{}
+{
+    population.resize(HMS);
+}
 
 
 void harmonySearch::UpdatePopulation(int func_num, int idx, solution new_sol)
