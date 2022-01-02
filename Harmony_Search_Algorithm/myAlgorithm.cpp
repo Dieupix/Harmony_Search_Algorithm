@@ -30,22 +30,24 @@ void harmonySearch::evaluate_pop(int func_num)
             fitness[i] = evaluate_solution(func_num, population[i]);
 }
 
-double harmonySearch::evaluate_solution(int func_num, solution sol)
+double harmonySearch::evaluate_solution(int func_num, const solution& sol)
 {
     switch(func_num)
     {
-        case 1:     return shifted_Sphere_func(sol);
+        case 1:
+            {
+                return shifted_Sphere_func(sol);
+                break;
+            }
+
+        case 2:    return shifted_Rastrigin_func(sol);
                     break;
 
-        case 2 :    return shifted_Rastrigin_func(sol);
+        case 3:    return shifted_Griewank_func(sol);
                     break;
 
-        case 3 :    return shifted_Griewank_func(sol);
+        case 4:    return shifted_Rosenbrock_func(sol);
                     break;
-
-        case 4 :    return shifted_Rosenbrock_func(sol);
-                    break;
-
     }
 }
 

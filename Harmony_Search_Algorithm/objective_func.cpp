@@ -1,13 +1,13 @@
 #include "objective_func.h"
 #include<cmath>
 
-double schifed_Sphere_func(const solution x)
+double shifted_Sphere_func(const solution& x)
 {
     double f_bias = -450 ;
     double res = 0 ;
     for( unsigned i = 0 ; i < x.size() ; i++ )
     {
-        res += x[i] ;
+        res += pow(x[i], 2) ;
     }
     return res + f_bias ;
 }
