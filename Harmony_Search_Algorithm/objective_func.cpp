@@ -37,3 +37,13 @@ double shifted_Griewank_func(const solution& x)
     return sum - product + 1 + f_bias;
 }
 
+double shifted_Rastrigin_func(const solution & x)
+{
+    double f_bias = -330;
+    double sum = 0;
+
+    for(unsigned i = 0; i < x.size(); i++)
+        sum += (pow(x[i],2) - 10 * cos(2 * M_PI) + 10);
+    return sum + f_bias;
+}
+

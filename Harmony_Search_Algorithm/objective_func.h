@@ -10,6 +10,6 @@
 
 double schifed_Sphere_func(const solution x) ;
 double shifted_Rosenbrock_func(const solution& x);
-double shifted_Griewank_func(const solution&);
-
+double shifted_Griewank_func(const solution& x);
+double shifted_Rosenbrock_func(const solution& x);
 #endif // OBJECTIVE_FUNC_H_INCLUDED
