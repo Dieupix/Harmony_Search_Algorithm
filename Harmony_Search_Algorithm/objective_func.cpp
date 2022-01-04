@@ -1,6 +1,7 @@
 #include "objective_func.h"
 #include<cmath>
 
+
 double shifted_Sphere_func(const solution& x)
 {
     double f_bias = -450 ;
@@ -43,7 +44,7 @@ double shifted_Rastrigin_func(const solution & x)
     double sum = 0;
 
     for(unsigned i = 0; i < x.size(); i++)
-        sum += (pow(x[i],2) - 10 * cos(2 * M_PI) + 10);
+        sum += (pow(x[i],2) - 10 * cos(2 * 3.141592) + 10);
     return sum + f_bias;
 }
 

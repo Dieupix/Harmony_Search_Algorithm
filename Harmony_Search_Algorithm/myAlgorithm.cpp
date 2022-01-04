@@ -40,14 +40,23 @@ double harmonySearch::evaluate_solution(int func_num, const solution& sol)
                 break;
             }
 
-        case 2:    return shifted_Rastrigin_func(sol);
-                    break;
+        case 2:
+            {
+                return shifted_Rastrigin_func(sol);
+                break;
+            }
 
-        case 3:    return shifted_Griewank_func(sol);
-                    break;
+        case 3:
+            {
+               return shifted_Griewank_func(sol);
+               break;
+            }
 
-        case 4:    return shifted_Rosenbrock_func(sol);
-                    break;
+        case 4:
+            {
+              return shifted_Rosenbrock_func(sol);
+              break;
+            }
     }
 }
 
@@ -69,11 +78,17 @@ double harmonySearch::mute()
      }
     return worst ;
  }
-
+void affiche(vector<double> s)
+{
+    for(int i = 0 ; i < s.size() ; i++)
+        cout <<s[i]<<" " ;
+}
 void harmonySearch::run(int func_num)
 {
     population = GenerateRandomPop();
-    //evaluate_pop(func_num);
+    //affiche(population[0]);
+    evaluate_pop(func_num);
+    //affiche(fitness);
     while(nbIterations < nbIterationsTotales && !CA)
     {
         solution X = create_new_solution(n);
@@ -105,10 +120,11 @@ void harmonySearch::run(int func_num)
 
 double harmonySearch::solve(int func_num)
 {
-    solution sol(dimension);
     for(unsigned i = 0; i < nbIterationsTotales; ++i)
     {
+        cout<<"avant";
         run(func_num);
+        cout<<"done";
         print_solution(population[best], fitness[best]);
     }
     return fitness[best];

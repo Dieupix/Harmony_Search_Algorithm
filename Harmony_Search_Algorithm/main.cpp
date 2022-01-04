@@ -10,12 +10,13 @@
 int main()
 {
     srand(time(NULL));
-    double hmcr = 0;
-    double par = 0;
+    double hmcr = 0.5;//0
+    double par = 0.01;//0
     //
     int num_runs = 10;
-    int num_funcs = 12;
+    int num_funcs = 1;//12
     vector<vector<double>> obj_vals_array(num_funcs);
+
     for (int func = 0; func < num_funcs; func++)
     {
         for (int run = 0; run < num_runs; run++)
@@ -31,17 +32,20 @@ int main()
 }
 
 
+/*
+double generate_random_double(double from, double to)
+{
+    double nRand ;
+    nRand = from + (double)rand() / (double)(RAND_MAX / (to - from));
+    return nRand;
+}
 
-/* Test fonction
 int main()
 {
-    double x = 2.0;
-    solution sol;
-    for(int i=0 ; i<10 ;++i)
-    {
-        sol.push_back(x*i);
-    }
-    double fct = shifted_Rosenbrock_func(sol);
-    cout<<fct<<endl;
+    for(int i{0} ; i<30 ; ++i)
+        {
+          double x = generate_random_double(20.0, 20000.0);
+          cout<<x<<endl;
+        }
 }
 */

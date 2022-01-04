@@ -1,17 +1,13 @@
 #include "OptUHA.h"
 
-
-
 vector<solution> OptUHA::GenerateRandomPop()
 {
-    vector<solution> population (pop_size);
-
+    vector<solution> population(pop_size);
     for( int i = 0 ; i < pop_size; i++)
     {
-
-        population[i] = GenerateNewSolution() ;
+        population[i] = GenerateNewSolution();
     }
-
+    return population;
 }
 
 double OptUHA::generate_random_double(double from, double to)
