@@ -24,10 +24,14 @@ int harmonySearch::FindBestSolution()
     return bestSolution ;
 }
 
-void harmonySearch::evaluate_pop(int func_num)
+vector<double> harmonySearch::evaluate_pop(int func_num)
 {
+    fitness.resize(pop_size) ;
+
     for(int i = 0; i < fitness.size(); i++)
             fitness[i] = evaluate_solution(func_num, population[i]);
+
+ return fitness ;
 }
 
 double harmonySearch::evaluate_solution(int func_num, const solution& sol)
@@ -70,10 +74,15 @@ double harmonySearch::mute()
     return worst ;
  }
 
+
 void harmonySearch::run(int func_num)
 {
+
+
     population = GenerateRandomPop();
-    //evaluate_pop(func_num);
+     fitness = evaluate_pop(func_num); // marche valeur trop grand
+
+
     while(nbIterations < nbIterationsTotales && !CA)
     {
         solution X = create_new_solution(n);
@@ -82,15 +91,17 @@ void harmonySearch::run(int func_num)
                 if(generate_random_double(0.0,1.0) < HMCR)
                 {
                     double val = population[generate_random_int(0,HMS)][j];
+
                     if(generate_random_double(0.0,1.0) < PAR)
                     {
                         val = mute();
                     }
                     X[j] = val;
                 }
-                else X[j] = generate_random_double(20.0,20000.0);
+                else X[j] = generate_random_double(-100.0,100.0);
             }
         double fX = evaluate_solution(func_num,X);
+
         CA = fX < critere;
         int ind_worst = FindWorstSolution();
         if(fX > fitness[ind_worst])
@@ -98,19 +109,36 @@ void harmonySearch::run(int func_num)
             UpdatePopulation(func_num,ind_worst,X);
         }
         ++nbIterations;
+
     }
+
+
 }
 
 
 
 double harmonySearch::solve(int func_num)
 {
+
     solution sol(dimension);
     for(unsigned i = 0; i < nbIterationsTotales; ++i)
     {
+
         run(func_num);
         print_solution(population[best], fitness[best]);
     }
     return fitness[best];
 }
 
+
+void affiche_population(vector<solution> population)
+{
+    for( int i = 0 ; i< population.size(); i++)
+     {
+         for( int j = 0 ; j< population.size(); j++)
+       {
+        cout <<population[i][j] <<endl ;
+        }
+
+     }
+}

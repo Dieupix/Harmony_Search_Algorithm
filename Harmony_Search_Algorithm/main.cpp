@@ -6,10 +6,9 @@
 #include <time.h>
 #include "myAlgorithm.h"
 #include "OptUHA.h"
+/*
 
-int main()
-{
-    srand(time(NULL));
+srand(time(NULL));
     double hmcr = 0;
     double par = 0;
     //
@@ -28,6 +27,15 @@ int main()
                 delete myAlgo; myAlgo = NULL;
         }
     }
+*/
+int main()
+{
+     int num_runs = 10;
+
+    double hmcr = 0.2;
+    double par = 0.005;
+    harmonySearch* myAlgo = new harmonySearch(hmcr,par);
+    double fitness = myAlgo->solve(1 );
 }
 
 
