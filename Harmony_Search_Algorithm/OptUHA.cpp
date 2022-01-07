@@ -1,32 +1,22 @@
 #include "OptUHA.h"
 
+OptUHA::OptUHA() : best{0}
+{}
+
 vector<solution> OptUHA::GenerateRandomPop()
 {
-<<<<<<< HEAD
-
-    vector<solution> population (pop_size);
-
-=======
     vector<solution> population(pop_size);
->>>>>>> 95f51123dbe981c374637c8337e8c14e03ccfb10
-    for( int i = 0 ; i < pop_size; i++)
+    for(unsigned i = 0; i < pop_size; i++)
     {
         population[i] = GenerateNewSolution();
     }
-<<<<<<< HEAD
 
-
-     return population ;
-=======
     return population;
->>>>>>> 95f51123dbe981c374637c8337e8c14e03ccfb10
 }
 
 double OptUHA::generate_random_double(double from, double to)
 {
   return from + (double)rand() / (double)(RAND_MAX / (to - from));
-
-
 }
 
 int OptUHA::generate_random_int(int from, int to)
@@ -38,17 +28,16 @@ int OptUHA::generate_random_int(int from, int to)
 
 solution OptUHA::create_new_solution(int n)
 {
-
     return solution{n};
 }
 
-void OptUHA::print_solution(const solution& sol, double fitness)
+void OptUHA::print_solution(const solution& sol, double fit)
 {
-    for(auto s : sol)
+    for(unsigned i = 0; i < sol.size(); ++i)
     {
-        cout << "- " << s << endl;
+        cout << "- " << sol[i] << endl;
     }
-    cout << "FITNESS: " << fitness << endl;
+    cout << "FITNESS: " << fit << endl;
 }
 
 solution OptUHA::GenerateNewSolution()
@@ -56,13 +45,10 @@ solution OptUHA::GenerateNewSolution()
     solution ns;
     ns.resize(pop_size) ;
 
-    for(int i{0} ; i<ns.size() ; ++i)
-        {
-
-           ns[i] = generate_random_double(-100.0,100.0);
-
-
-        }
+    for(unsigned i{0}; i<ns.size(); ++i)
+    {
+       ns[i] = generate_random_double(-100.0,100.0);
+    }
 
     return ns;
 }

@@ -2,10 +2,7 @@
 //
 
 #include <iostream>
-#include <vector>
-#include <time.h>
 #include "myAlgorithm.h"
-#include "OptUHA.h"
 /*
 
 <<<<<<< HEAD
@@ -39,12 +36,14 @@ int main()
 */
 int main()
 {
-     int num_runs = 10;
+    int num_runs = 30;
+    int func_num = 0;
+    int num_funcs = 4;
 
     double hmcr = 0.2;
     double par = 0.005;
-    harmonySearch* myAlgo = new harmonySearch(hmcr,par);
-    double fitness = myAlgo->solve(1 );
+    harmonySearch myAlgo{hmcr,par};
+    double fitness = myAlgo.solve(func_num+1);
 }
 
 

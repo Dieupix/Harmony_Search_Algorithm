@@ -16,7 +16,7 @@ void harmonySearch::UpdatePopulation(int func_num, int idx, solution new_sol)
 int harmonySearch::FindBestSolution()
 {
      int bestSolution = 0 ;
-     for( int i = 1 ; i< fitness.size(); i++ )
+     for(unsigned i = 1; i< fitness.size(); i++ )
      {
          if( fitness[bestSolution] < fitness[i])
             bestSolution = i;
@@ -24,44 +24,51 @@ int harmonySearch::FindBestSolution()
     return bestSolution ;
 }
 
-vector<double> harmonySearch::evaluate_pop(int func_num)
+void harmonySearch::evaluate_pop(int func_num)
 {
-    fitness.resize(pop_size) ;
+    fitness.resize(pop_size);
+    for(unsigned i = 0; i < fitness.size(); i++)
+        fitness[i] = evaluate_solution(func_num, population[i]);
 
-    for(int i = 0; i < fitness.size(); i++)
-            fitness[i] = evaluate_solution(func_num, population[i]);
-
- return fitness ;
+    best = FindBestSolution();
 }
 
 double harmonySearch::evaluate_solution(int func_num, const solution& sol)
 {
+    double rtrn = 0;
     switch(func_num)
     {
         case 1:
             {
-                return shifted_Sphere_func(sol);
+                rtrn = shifted_Sphere_func(sol);
                 break;
             }
 
         case 2:
             {
-                return shifted_Rastrigin_func(sol);
+                rtrn = shifted_Rastrigin_func(sol);
                 break;
             }
 
         case 3:
             {
-               return shifted_Griewank_func(sol);
-               break;
+                rtrn = shifted_Griewank_func(sol);
+                break;
             }
 
         case 4:
             {
-              return shifted_Rosenbrock_func(sol);
-              break;
+                rtrn = shifted_Rosenbrock_func(sol);
+                break;
             }
+        default:
+            {
+                cerr << "ERROR: evaluate_solution: func_num is not defined" << endl;
+                break;
+            }
+
     }
+    return rtrn;
 }
 
 void harmonySearch::update_fitness(int idx, double fitness_val)
@@ -75,54 +82,43 @@ double harmonySearch::mute()
  int harmonySearch::FindWorstSolution()
  {
      int worst = 0 ;
-     for( int i = 1 ; i< fitness.size(); i++ )
+     for(unsigned i = 1; i< fitness.size(); ++i)
      {
          if( fitness[worst] > fitness[i])
             worst = i;
      }
     return worst ;
  }
-<<<<<<< HEAD
-
-
-=======
 void affiche(vector<double> s)
 {
-    for(int i = 0 ; i < s.size() ; i++)
+    for(unsigned i = 0; i < s.size(); ++i)
         cout <<s[i]<<" " ;
 }
->>>>>>> 95f51123dbe981c374637c8337e8c14e03ccfb10
+
 void harmonySearch::run(int func_num)
 {
-
-
     population = GenerateRandomPop();
-<<<<<<< HEAD
-     fitness = evaluate_pop(func_num); // marche valeur trop grand
+    evaluate_pop(func_num); // marche valeur trop grand
 
-
-=======
-    //affiche(population[0]);
-    evaluate_pop(func_num);
     //affiche(fitness);
->>>>>>> 95f51123dbe981c374637c8337e8c14e03ccfb10
     while(nbIterations < nbIterationsTotales && !CA)
     {
         solution X = create_new_solution(n);
-        for(int j{0} ; j < X.size() ; ++j)
+        for(unsigned j{0}; j < X.size(); ++j)
+        {
+            if(generate_random_double(0.0,1.0) < HMCR)
             {
-                if(generate_random_double(0.0,1.0) < HMCR)
-                {
-                    double val = population[generate_random_int(0,HMS)][j];
+                double val = population[generate_random_int(0,HMS)][j];
 
-                    if(generate_random_double(0.0,1.0) < PAR)
-                    {
-                        val = mute();
-                    }
-                    X[j] = val;
+                if(generate_random_double(0.0,1.0) < PAR)
+                {
+                    val = mute();
                 }
-                else X[j] = generate_random_double(-100.0,100.0);
+                X[j] = val;
             }
+            else X[j] = generate_random_double(-100.0,100.0);
+        }
+
         double fX = evaluate_solution(func_num,X);
 
         CA = fX < critere;
@@ -132,43 +128,31 @@ void harmonySearch::run(int func_num)
             UpdatePopulation(func_num,ind_worst,X);
         }
         ++nbIterations;
-
     }
-
-
 }
-
-
 
 double harmonySearch::solve(int func_num)
 {
-<<<<<<< HEAD
-
     solution sol(dimension);
-    for(unsigned i = 0; i < nbIterationsTotales; ++i)
-    {
 
-=======
     for(unsigned i = 0; i < nbIterationsTotales; ++i)
     {
-        cout<<"avant";
->>>>>>> 95f51123dbe981c374637c8337e8c14e03ccfb10
         run(func_num);
-        cout<<"done";
-        print_solution(population[best], fitness[best]);
     }
+
+    print_solution(population[best], fitness[best]);
+
     return fitness[best];
 }
 
 
-void affiche_population(vector<solution> population)
+void affiche_population(const vector<solution>& population)
 {
-    for( int i = 0 ; i< population.size(); i++)
-     {
-         for( int j = 0 ; j< population.size(); j++)
-       {
-        cout <<population[i][j] <<endl ;
+    for(unsigned i = 0; i< population.size(); ++i)
+    {
+        for(unsigned j = 0; j< population.size(); ++j)
+        {
+            cout << population[i][j] << endl ;
         }
-
-     }
+    }
 }

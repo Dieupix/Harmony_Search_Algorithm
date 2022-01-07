@@ -1,16 +1,16 @@
-#pragma once
 #ifndef _OPTUHA_
 #define _OPTUHA_
+
 #include <vector>
 #include <random>
 #include <stdlib.h>
 #include <stdio.h>
 #include <time.h>
-#include "iostream"
+#include <iostream>
+
 using namespace std;
 
 typedef vector<double> solution; //Une harmonie
-
 
 class OptUHA
 {
@@ -98,9 +98,9 @@ protected :
 	void check_bound_pop(vector<solution>& population);
 
 	///@TODO : [Alexandre] constructeur
-	OptUHA() = default;
+	OptUHA();
 
-	//~OptUHA() = default;
+	~OptUHA() = default;
 };
 
-#endif
+#endif // _OPTUHA_
