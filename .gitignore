@@ -41,6 +41,7 @@ bin/
 obj/
 
 ### personnal outputs ###
-outputs/.gitkeeper
+outputs/*
+!outputs/.gitkeeper
 
 
