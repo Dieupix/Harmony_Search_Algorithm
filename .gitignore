@@ -39,3 +39,8 @@
 # generated directories
 bin/
 obj/
+
+### personnal outputs ###
+outputs/.gitkeeper
+
+
