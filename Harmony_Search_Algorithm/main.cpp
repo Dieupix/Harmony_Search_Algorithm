@@ -5,17 +5,11 @@
 #include "myAlgorithm.h"
 /*
 
-<<<<<<< HEAD
-srand(time(NULL));
-    double hmcr = 0;
-    double par = 0;
-=======
 int main()
 {
     srand(time(NULL));
     double hmcr = 0.5;//0
     double par = 0.01;//0
->>>>>>> 95f51123dbe981c374637c8337e8c14e03ccfb10
     //
     int num_runs = 10;
     int num_funcs = 1;//12
@@ -34,6 +28,7 @@ int main()
         }
     }
 */
+
 int main()
 {
     int num_runs = 30;
@@ -45,7 +40,6 @@ int main()
     harmonySearch myAlgo{hmcr,par};
     double fitness = myAlgo.solve(func_num+1);
 }
-
 
 /*
 double generate_random_double(double from, double to)

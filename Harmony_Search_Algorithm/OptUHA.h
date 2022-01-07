@@ -7,6 +7,7 @@
 #include <stdio.h>
 #include <time.h>
 #include <iostream>
+#include <iomanip>
 
 using namespace std;
 
@@ -24,6 +25,7 @@ protected:
 	vector<double>						bound_min; // bornes min
 	vector<double>						bound_max ; // bornes max
 	int                                 best; //l'indice de la meilleure fitness
+    const vector<double>                DNA_range = {20, 20000}; // l'ecart de chaque gene
 
 protected:
 	vector<double>						fitness; // toutes les valeurs de la fonction objectif de la population

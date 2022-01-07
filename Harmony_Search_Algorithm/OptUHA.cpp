@@ -21,9 +21,7 @@ double OptUHA::generate_random_double(double from, double to)
 
 int OptUHA::generate_random_int(int from, int to)
 {
-    int nRand;
-    nRand = rand() % (to - from + 1) + from;
-    return nRand;
+    return rand() % (to - from + 1) + from;
 }
 
 solution OptUHA::create_new_solution(unsigned n)
@@ -35,7 +33,7 @@ void OptUHA::print_solution(const solution& sol, double fit)
 {
     for(unsigned i = 0; i < sol.size(); ++i)
     {
-        cout << "- " << sol[i] << endl;
+        cout << sol[i] << endl;
     }
     cout << "FITNESS: " << fit << endl;
 }
@@ -47,7 +45,7 @@ solution OptUHA::GenerateNewSolution()
 
     for(unsigned i{0}; i<ns.size(); ++i)
     {
-       ns[i] = generate_random_double(-100.0,100.0);
+       ns[i] = generate_random_double(DNA_range[0], DNA_range[1]);
     }
 
     return ns;

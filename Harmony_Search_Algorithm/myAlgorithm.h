@@ -19,7 +19,7 @@ protected:
 	vector<solution> population;
 
 protected:
-	void UpdatePopulation(int func_num, int idx, solution new_sol); ///@TODO : [Manu] met a jour la population (ajoute X a la place de la pire solution (idx)) => fonction Remplace()
+	void UpdatePopulation(int func_num, int idx, const solution& new_sol); ///@TODO : [Manu] met a jour la population (ajoute X a la place de la pire solution (idx)) => fonction Remplace()
 	int FindBestSolution(); ///@TODO : [Meriem] cherche la meilleure valeur du tableau fitness
 	void evaluate_pop(int func_num); ///@TODO : [Mathis] evalue la population par rapport a la fonction
 	double evaluate_solution(int func_num, const solution& sol); ///@TODO : [Mathis] evalue une harmonie par rapport a la fonction
