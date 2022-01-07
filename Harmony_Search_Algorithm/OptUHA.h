@@ -67,7 +67,7 @@ protected :
      *
      */
      ///@TODO : [Manu]
-	solution create_new_solution(int n);
+	solution create_new_solution(unsigned n);
 
     /** @brief Imprime une solution
      *

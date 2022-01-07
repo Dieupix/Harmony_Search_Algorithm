@@ -26,9 +26,9 @@ int OptUHA::generate_random_int(int from, int to)
     return nRand;
 }
 
-solution OptUHA::create_new_solution(int n)
+solution OptUHA::create_new_solution(unsigned n)
 {
-    return solution{n};
+    return solution(n);
 }
 
 void OptUHA::print_solution(const solution& sol, double fit)
