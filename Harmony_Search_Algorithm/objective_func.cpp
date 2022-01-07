@@ -5,20 +5,13 @@
 solution changeIntervalle(const solution& s, double high, double low)
 {
     double from = 20, to = 20000;
+    double oldRange = to - from;
     solution newSol(s.size());
 
     for(unsigned i = 0; i < s.size(); ++i)
     {
-        double oldRange = to - from;
-        if(oldRange == 0)
-        {
-            newSol[i] = low;
-        }
-        else
-        {
-            double newRange = high - low;
-            newSol[i] = (((s[i] - from) * newRange) / oldRange) + low;
-        }
+        double newRange = high - low;
+        newSol[i] = (((s[i] - from) * newRange) / oldRange) + low;
     }
 
     return newSol;
@@ -33,7 +26,7 @@ double shifted_Sphere_func(const solution& x)
     double res = 0 ;
     for(unsigned i = 0; i < newX.size(); ++i)
     {
-        res += pow(newX[i], 2) ;
+        res += pow(newX[i], 2);
     }
     return res + f_bias;
 }
@@ -43,12 +36,12 @@ double shifted_Rosenbrock_func(const solution& x)
     double high = 100, low = -100;
     auto newX = changeIntervalle(x, high, low);
 
-    double f_bias = -450;
+    double f_bias = 390;
     double res = 0.0;
     for(unsigned i{0}; i< newX.size()-1; ++i)
-        {
-            res += 100*(pow( pow(newX[i],2) - newX[i+1],2) ) + pow(newX[i]-1,2) ;
-        }
+    {
+        res += 100*(pow( pow(newX[i],2) - newX[i+1], 2)) + pow(newX[i]-1, 2);
+    }
     return res + f_bias;
 }
 
@@ -63,7 +56,7 @@ double shifted_Griewank_func(const solution& x)
 
     for(unsigned i = 0; i < newX.size(); ++i){
         sum += pow(newX[i], 2) / 4000;
-        product *= cos(newX[i]/sqrt(i));
+        product *= cos(newX[i]/sqrt(i+1));
     }
 
     return sum - product + 1 + f_bias;
@@ -78,7 +71,8 @@ double shifted_Rastrigin_func(const solution& x)
     double sum = 0;
 
     for(unsigned i = 0; i < newX.size(); ++i)
-        sum += (pow(newX[i],2) - 10 * cos(2 * M_PI) + 10);
+        sum += pow(newX[i],2) - 10 * cos(2 * M_PI) + 10;
+
     return sum + f_bias;
 }
 

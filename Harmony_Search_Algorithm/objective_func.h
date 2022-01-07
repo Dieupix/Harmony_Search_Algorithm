@@ -3,7 +3,7 @@
 
 #include "myAlgorithm.h"
 
-solution changeInterval(const solution&, double, double = 0);
+solution changeIntervalle(const solution&, double, double = 0);
 
 double shifted_Sphere_func      (const solution& x);
 double shifted_Rosenbrock_func  (const solution& x);

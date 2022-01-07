@@ -10,13 +10,12 @@ vector<solution> OptUHA::GenerateRandomPop()
     {
         population[i] = GenerateNewSolution();
     }
-
     return population;
 }
 
 double OptUHA::generate_random_double(double from, double to)
 {
-  return from + (double)rand() / (double)(RAND_MAX / (to - from));
+    return from + (double)rand() / (double)(RAND_MAX / (to - from));
 }
 
 int OptUHA::generate_random_int(int from, int to)
@@ -31,9 +30,10 @@ solution OptUHA::create_new_solution(unsigned n)
 
 void OptUHA::print_solution(const solution& sol, double fit)
 {
+    cout << "SOLUTION:" << endl;
     for(unsigned i = 0; i < sol.size(); ++i)
     {
-        cout << sol[i] << endl;
+        cout << "|  " << sol[i] << endl;
     }
     cout << "FITNESS: " << fit << endl;
 }

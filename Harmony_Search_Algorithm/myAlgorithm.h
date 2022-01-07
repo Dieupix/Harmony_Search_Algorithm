@@ -3,9 +3,11 @@
 
 #include "OptUHA.h"
 #include "objective_func.h"
-#include<cmath>
 
-class harmonySearch : OptUHA
+#include <cmath>
+#include <fstream>
+
+class harmonySearch : public OptUHA
 {
 protected:
     int HMS = pop_size; //nombre d'harmonies de la population
@@ -18,8 +20,8 @@ protected:
     unsigned nbIterationsTotales = 30;
 	vector<solution> population;
 
-protected:
-	void UpdatePopulation(int func_num, int idx, const solution& new_sol); ///@TODO : [Manu] met a jour la population (ajoute X a la place de la pire solution (idx)) => fonction Remplace()
+public:
+	void UpdatePopulation(int idx, const solution& new_sol, double fX); ///@TODO : [Manu] met a jour la population (ajoute X a la place de la pire solution (idx)) => fonction Remplace()
 	int FindBestSolution(); ///@TODO : [Meriem] cherche la meilleure valeur du tableau fitness
 	void evaluate_pop(int func_num); ///@TODO : [Mathis] evalue la population par rapport a la fonction
 	double evaluate_solution(int func_num, const solution& sol); ///@TODO : [Mathis] evalue une harmonie par rapport a la fonction
@@ -31,8 +33,11 @@ protected:
     int FindWorstSolution(); ///@TODO : [Meriem] cherche la pire solution dans fitness (a utiliser : UpdatePopulation())
     void run(int func_num); ///@TODO : [les 4] l'algo en soit
 
+    void save(int) const; ///@TODO : Alex : sauvegarde la meilleure fitness dans un fichier suivant la fonction utilisée
+    void saveIn(const string&) const; ///@TODO : Alex : sauvegarde la meilleure fitness dans un fichier
+
 public:
-	double solve(int func_num); ///@TODO : [Alexandre] renvoie la meilleure valeur trouvee par l'algo par rapport a la fonction
+	void solve(int func_num); ///@TODO : [Alexandre] renvoie la meilleure valeur trouvee par l'algo par rapport a la fonction
 	harmonySearch(double hmcr, double par);///@TODO : [Alexandre] constructeur
 	~harmonySearch() = default;
 

@@ -3,8 +3,10 @@
 
 #include <iostream>
 #include "myAlgorithm.h"
-/*
 
+using namespace std;
+
+/*
 int main()
 {
     srand(time(NULL));
@@ -31,30 +33,25 @@ int main()
 
 int main()
 {
-    int num_runs = 30;
-    int func_num = 0;
-    int num_funcs = 4;
+    srand(time(NULL));
+
+    unsigned func_num = 0, num_funcs = 4;
 
     double hmcr = 0.2;
     double par = 0.005;
+
     harmonySearch myAlgo{hmcr,par};
-    double fitness = myAlgo.solve(func_num+1);
+
+    for(func_num = 0; func_num < num_funcs; ++func_num)
+    {
+        myAlgo.solve(func_num+1);
+    }
+
+    /*OptUHA opt;
+    for(unsigned i = 0; i < 99; ++i) // TEST THE RANDOM GENERATOR ENGINE
+    {
+        cout << opt.generate_random_double(0, 10) << endl;
+    }*/
+
 }
 
-/*
-double generate_random_double(double from, double to)
-{
-    double nRand ;
-    nRand = from + (double)rand() / (double)(RAND_MAX / (to - from));
-    return nRand;
-}
-
-int main()
-{
-    for(int i{0} ; i<30 ; ++i)
-        {
-          double x = generate_random_double(20.0, 20000.0);
-          cout<<x<<endl;
-        }
-}
-*/

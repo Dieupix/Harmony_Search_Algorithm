@@ -2,12 +2,11 @@
 #define _OPTUHA_
 
 #include <vector>
-#include <random>
-#include <stdlib.h>
-#include <stdio.h>
 #include <time.h>
 #include <iostream>
 #include <iomanip>
+
+//#include <random>
 
 using namespace std;
 
@@ -30,12 +29,14 @@ protected:
 protected:
 	vector<double>						fitness; // toutes les valeurs de la fonction objectif de la population
 
+/*
 protected:
 	//random engine and distribution
 	default_random_engine				dre;
 	uniform_real_distribution<double>	urd;
+*/
 
-protected :
+public:
 
     /** @brief Genere une population au hasard. => a utiliser au debut
      *          A utiliser : GenerateNewSolution()
