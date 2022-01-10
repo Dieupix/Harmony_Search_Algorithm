@@ -32,30 +32,23 @@ solution OptUHA::create_new_solution(unsigned n)
 
 void OptUHA::print_solution(const solution& sol, double fit)
 {
-    cout << "SOLUTION:" << endl;
+    cout << "SOLUTION:" << " " << "Fitness: " << fit << endl;
     for(unsigned i = 0; i < sol.size(); ++i)
     {
         cout << "|  " << sol[i] << endl;
     }
-    cout << "FITNESS: " << fit << endl;
 }
 
 solution OptUHA::GenerateNewSolution()
 {
-    solution ns;
-    ns.resize(pop_size) ;
+    solution ns(pop_size);
 
-    for(unsigned i{0}; i<ns.size(); ++i)
+    for(unsigned i{0}; i < ns.size(); ++i)
     {
        ns[i] = generate_random_double(dna_range[0], dna_range[1]);
     }
 
     return ns;
-}
-
-void OptUHA::check_bound_pop(vector<solution>& population)
-{
-
 }
 
 

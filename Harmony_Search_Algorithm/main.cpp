@@ -3,7 +3,6 @@
 
 #include <iostream>
 #include "myAlgorithm.h"
-#include <cstdlib>
 
 using namespace std;
 
@@ -36,21 +35,14 @@ int main()
 {
     unsigned func_num = 0, num_funcs = 4;
 
-    double hmcr = 0.2;
-    double par = 0.005;
+    double hmcr = 0.9;
+    double par = 0.4;
 
-    harmonySearch myAlgo{hmcr,par};
+    harmonySearch myAlgo{hmcr, par};
 
     for(func_num = 0; func_num < num_funcs; ++func_num)
     {
         myAlgo.solve(func_num+1);
     }
-
-    /*OptUHA opt;
-    for(unsigned i = 0; i < 99; ++i) // TEST THE RANDOM GENERATOR ENGINE
-    {
-        cout << opt.generate_random_double(0, 10) << endl;
-    }*/
-
 }
 

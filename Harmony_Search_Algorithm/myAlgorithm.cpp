@@ -118,7 +118,8 @@ void harmonySearch::run(int func_num)
             {
                 double val = population[generate_random_int(0, HMS-1)][j];
 
-                if(generate_random_double(0.0, 1.0) < PAR) val = mute();
+                if(generate_random_double(0.0, 1.0) < PAR)
+                    val = mute();
 
                 X[j] = val;
             }
@@ -155,38 +156,41 @@ void harmonySearch::solve(int func_num)
 void harmonySearch::save(int func_num) const
 {
     string fileName = "../outputs/";
+    string extension = "2.txt";
     switch(func_num)
     {
         case 1:
             {
-                fileName += "shifted_Sphere_func.txt";
+                fileName += "shifted_Sphere_func";
                 break;
             }
 
         case 2:
             {
-                fileName += "shifted_Rastrigin_func.txt";
+                fileName += "shifted_Rastrigin_func";
                 break;
             }
 
         case 3:
             {
-                fileName += "shifted_Griewank_func.txt";
+                fileName += "shifted_Griewank_func";
                 break;
             }
 
         case 4:
             {
-                fileName += "shifted_Rosenbrock_func.txt";
+                fileName += "shifted_Rosenbrock_func";
                 break;
             }
         default:
             {
                 cerr << "ERROR: save: func_num is not defined" << endl;
-                fileName += "errorSAVE.txt";
+                fileName += "errorSAVE";
                 break;
             }
     }
+
+    fileName += extension;
 
     saveIn(fileName);
 }
