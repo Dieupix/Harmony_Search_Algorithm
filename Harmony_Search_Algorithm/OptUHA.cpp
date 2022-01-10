@@ -1,7 +1,9 @@
 #include "OptUHA.h"
 
 OptUHA::OptUHA() : best{0}
-{}
+{
+    srand(time(NULL));
+}
 
 vector<solution> OptUHA::GenerateRandomPop()
 {
@@ -15,7 +17,7 @@ vector<solution> OptUHA::GenerateRandomPop()
 
 double OptUHA::generate_random_double(double from, double to)
 {
-    return from + (double)rand() / (double)(RAND_MAX / (to - from));
+    return from + static_cast<double>(rand()) / (static_cast<double>(RAND_MAX) / (to - from));
 }
 
 int OptUHA::generate_random_int(int from, int to)
@@ -45,7 +47,7 @@ solution OptUHA::GenerateNewSolution()
 
     for(unsigned i{0}; i<ns.size(); ++i)
     {
-       ns[i] = generate_random_double(DNA_range[0], DNA_range[1]);
+       ns[i] = generate_random_double(dna_range[0], dna_range[1]);
     }
 
     return ns;

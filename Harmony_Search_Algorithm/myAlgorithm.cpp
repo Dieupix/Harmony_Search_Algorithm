@@ -89,7 +89,7 @@ void harmonySearch::update_fitness(int idx, double fitness_val)
 
 double harmonySearch::mute()
 {
-    return generate_random_double(DNA_range[0], DNA_range[1]);
+    return generate_random_double(dna_range[0], dna_range[1]);
 }
 
 int harmonySearch::FindWorstSolution()
@@ -122,7 +122,7 @@ void harmonySearch::run(int func_num)
 
                 X[j] = val;
             }
-            else X[j] = generate_random_double(DNA_range[0], DNA_range[1]);
+            else X[j] = generate_random_double(dna_range[0], dna_range[1]);
         }
 
         double fX = evaluate_solution(func_num, X);

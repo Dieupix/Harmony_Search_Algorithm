@@ -3,6 +3,7 @@
 
 #include <iostream>
 #include "myAlgorithm.h"
+#include <cstdlib>
 
 using namespace std;
 
@@ -33,8 +34,6 @@ int main()
 
 int main()
 {
-    srand(time(NULL));
-
     unsigned func_num = 0, num_funcs = 4;
 
     double hmcr = 0.2;

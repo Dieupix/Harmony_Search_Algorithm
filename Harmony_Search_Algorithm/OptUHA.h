@@ -24,7 +24,7 @@ protected:
 	vector<double>						bound_min; // bornes min
 	vector<double>						bound_max ; // bornes max
 	int                                 best; //l'indice de la meilleure fitness
-    const vector<double>                DNA_range = {20, 20000}; // l'ecart de chaque gene
+    const vector<double>                dna_range = {20, 20000}; // l'intervalle de chaque gêne
 
 protected:
 	vector<double>						fitness; // toutes les valeurs de la fonction objectif de la population

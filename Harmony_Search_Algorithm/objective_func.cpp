@@ -2,7 +2,7 @@
 
 #define M_PI 3.14159265358979323846
 
-solution changeIntervalle(const solution& s, double high, double low)
+solution changeIntervalle(const solution& s, double low, double high)
 {
     double from = 20, to = 20000;
     double oldRange = to - from;
@@ -20,7 +20,7 @@ solution changeIntervalle(const solution& s, double high, double low)
 double shifted_Sphere_func(const solution& x)
 {
     double high = 100, low = -100;
-    auto newX = changeIntervalle(x, high, low);
+    auto newX = changeIntervalle(x, low, high);
 
     double f_bias = -450 ;
     double res = 0 ;
@@ -34,7 +34,7 @@ double shifted_Sphere_func(const solution& x)
 double shifted_Rosenbrock_func(const solution& x)
 {
     double high = 100, low = -100;
-    auto newX = changeIntervalle(x, high, low);
+    auto newX = changeIntervalle(x, low, high);
 
     double f_bias = 390;
     double res = 0.0;
@@ -48,7 +48,7 @@ double shifted_Rosenbrock_func(const solution& x)
 double shifted_Griewank_func(const solution& x)
 {
     double high = 600, low = -600;
-    auto newX = changeIntervalle(x, high, low);
+    auto newX = changeIntervalle(x, low, high);
 
     double f_bias = -180;
     double sum = 0;
@@ -65,7 +65,7 @@ double shifted_Griewank_func(const solution& x)
 double shifted_Rastrigin_func(const solution& x)
 {
     double high = 5, low = -5;
-    auto newX = changeIntervalle(x, high, low);
+    auto newX = changeIntervalle(x, low, high);
 
     double f_bias = -330;
     double sum = 0;
