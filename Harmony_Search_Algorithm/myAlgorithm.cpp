@@ -54,19 +54,16 @@ double harmonySearch::evaluate_solution(int func_num, const solution& sol)
                 rtrn = shifted_Sphere_func(sol);
                 break;
             }
-
         case 2:
             {
                 rtrn = shifted_Rastrigin_func(sol);
                 break;
             }
-
         case 3:
             {
                 rtrn = shifted_Griewank_func(sol);
                 break;
             }
-
         case 4:
             {
                 rtrn = shifted_Rosenbrock_func(sol);
@@ -77,7 +74,6 @@ double harmonySearch::evaluate_solution(int func_num, const solution& sol)
                 cerr << "ERROR: evaluate_solution: func_num is not defined" << endl;
                 break;
             }
-
     }
     return rtrn;
 }
@@ -156,7 +152,7 @@ void harmonySearch::solve(int func_num)
 void harmonySearch::save(int func_num) const
 {
     string fileName = "../outputs/";
-    string extension = "2.txt";
+    string extension = ".txt";
     switch(func_num)
     {
         case 1:
@@ -164,19 +160,16 @@ void harmonySearch::save(int func_num) const
                 fileName += "shifted_Sphere_func";
                 break;
             }
-
         case 2:
             {
                 fileName += "shifted_Rastrigin_func";
                 break;
             }
-
         case 3:
             {
                 fileName += "shifted_Griewank_func";
                 break;
             }
-
         case 4:
             {
                 fileName += "shifted_Rosenbrock_func";
