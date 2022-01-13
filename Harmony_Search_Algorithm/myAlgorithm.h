@@ -34,6 +34,7 @@ public:
     void run(int func_num); ///@TODO : [les 4] l'algo en soit
 
     void changeDNARange(int);
+    void changeFBias(int);
     void save(int) const; ///@TODO : Alex : sauvegarde la meilleure fitness dans un fichier suivant la fonction utilisée
     void saveIn(const string&) const; ///@TODO : Alex : sauvegarde la meilleure fitness dans un fichier
 

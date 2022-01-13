@@ -1,6 +1,6 @@
 #include "OptUHA.h"
 
-OptUHA::OptUHA() : best{0}
+OptUHA::OptUHA() : best{0}, worst{0}
 {
     srand(time(NULL));
 }

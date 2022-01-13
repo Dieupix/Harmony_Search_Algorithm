@@ -18,9 +18,9 @@ protected:
 	size_t								pop_size = 30; // taille de la population
 	size_t								dimension = 30 ; // dimension du problème
 	size_t								total_func_evals = 2000000; // nombre total d'évaluation
-	size_t								max_func_eval = total_func_evals * pop_size; // nombre total d'appel de la fonction objectif
 	bool								optimization_mode = 0; // 0 = min; 1 = max;
 	int                                 best; //l'indice de la meilleure fitness
+	int                                 worst; //l'indice de la pire fitness
     vector<double>                      dna_range = {20, 20000}; // l'intervalle de chaque gêne
 
 protected:
