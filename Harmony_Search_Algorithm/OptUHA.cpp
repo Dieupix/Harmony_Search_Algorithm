@@ -32,11 +32,12 @@ solution OptUHA::create_new_solution(unsigned n)
 
 void OptUHA::print_solution(const solution& sol, double fit)
 {
-    cout << "SOLUTION:" << " " << "Fitness: " << fit << endl;
+    cout << "SOLUTION:" << endl;
     for(unsigned i = 0; i < sol.size(); ++i)
     {
         cout << "|  " << sol[i] << endl;
     }
+    cout << "Fitness: " << fit << endl;
 }
 
 solution OptUHA::GenerateNewSolution()

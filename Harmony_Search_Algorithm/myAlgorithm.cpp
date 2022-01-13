@@ -51,7 +51,7 @@ int harmonySearch::FindWorstSolution()
 
 void harmonySearch::evaluate_pop(int func_num)
 {
-    for(unsigned i = 0; i < fitness.size(); ++i)
+    for(unsigned i = 0; i < population.size(); ++i)
     {
         fitness[i] = evaluate_solution(func_num, population[i]);
     }

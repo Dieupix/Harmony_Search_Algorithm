@@ -7,7 +7,7 @@ double harmonySearch::shifted_Sphere_func(const solution& x)
 
     for(unsigned i = 0; i < x.size(); ++i)
     {
-        z = x[i] - 0;
+        z = x[i];
         res += z * z;
     }
 
@@ -27,7 +27,7 @@ double harmonySearch::shifted_Rastrigin_func(const solution& x)
 
     for(unsigned i = 0; i < x.size(); ++i)
     {
-        z = x[i] - 0;
+        z = x[i];
         res += (z * z) - 10 * cos(2 * M_PI * z) + 10;
     }
 
@@ -48,7 +48,7 @@ double harmonySearch::shifted_Griewank_func(const solution& x)
 
     for(unsigned i = 0; i < x.size(); ++i)
     {
-        z = x[i] - 0;
+        z = x[i];
         sum += (z * z) / 4000;
         product *= cos(z / sqrt(i+1));
     }
@@ -71,8 +71,8 @@ double harmonySearch::shifted_Rosenbrock_func(const solution& x)
 
     for(unsigned i = 0; i < x.size()-1; ++i)
     {
-        z = x[i] - 0 + 1;
-        z1 = x[i+1] - 0 + 1;
+        z = x[i] + 1;
+        z1 = x[i+1] + 1;
 
         auto sq = ((z * z) - z1) * ((z * z) - z1);
         auto sq1 = (z-1) * (z-1);
