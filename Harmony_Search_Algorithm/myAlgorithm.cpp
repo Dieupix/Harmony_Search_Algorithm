@@ -40,13 +40,13 @@ int harmonySearch::FindBestSolution()
 
 int harmonySearch::FindWorstSolution()
 {
-    int worst = 0;
+    int worstSolution = 0;
     for(unsigned i = 1; i < fitness.size(); ++i)
     {
-        if(fitness[worst] < fitness[i])
-            worst = i;
+        if(fitness[worstSolution] < fitness[i])
+            worstSolution = i;
     }
-    return worst;
+    return worstSolution;
 }
 
 void harmonySearch::evaluate_pop(int func_num)
@@ -121,6 +121,7 @@ void harmonySearch::run(int func_num)
         double fX = evaluate_solution(func_num, X);
 
         CA = abs(fX) < critere;
+        if(CA) cout << "CA atteint!" << endl;
 
         if(fX < fitness[worst])
         {
@@ -174,28 +175,6 @@ void harmonySearch::changeDNARange(int func_num)
             break;
     }
 }
-
-/*void harmonySearch::changeFBias(int func_num)
-{
-    switch(func_num)
-    {
-        case 1: // shifted_Sphere_func
-            f_bias = -450;
-            break;
-        case 2: // shifted_Rastrigin_func
-            f_bias = -330;
-            break;
-        case 3: // shifted_Griewank_func
-            f_bias = -180;
-            break;
-        case 4: // shifted_Rosenbrock_func
-            f_bias = 390;
-            break;
-        default:
-            cerr << "ERROR: changeFBias: func_num is not defined" << endl;
-            break;
-    }
-}*/
 
 void harmonySearch::save(int func_num) const
 {
