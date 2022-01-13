@@ -16,30 +16,45 @@ void affiche_population(const vector<solution>& population)
 harmonySearch::harmonySearch(double hmcr, double par) : HMCR{hmcr}, PAR{par}
 {
     population.resize(HMS);
-    fitness.resize(n);
+    fitness.resize(HMS);
 }
 
 void harmonySearch::UpdatePopulation(int idx, const solution& new_sol, double fX)
 {
     population[idx] = new_sol;
     update_fitness(idx, fX);
+
+    best = FindBestSolution();
 }
 
 int harmonySearch::FindBestSolution()
 {
-     int bestSolution = 0 ;
-     for(unsigned i = 1; i < fitness.size(); ++i)
-     {
-        if(fitness[bestSolution] > fitness[i])
-            bestSolution = i;
-     }
+    int bestSolution = 0;
+    for(unsigned i = 1; i < fitness.size(); ++i)
+    {
+    if(fitness[bestSolution] > fitness[i])
+        bestSolution = i;
+    }
     return bestSolution;
+}
+
+int harmonySearch::FindWorstSolution()
+{
+    int worst = 0 ;
+    for(unsigned i = 1; i< fitness.size(); ++i)
+    {
+        if(fitness[worst] < fitness[i])
+            worst = i;
+    }
+    return worst ;
 }
 
 void harmonySearch::evaluate_pop(int func_num)
 {
     for(unsigned i = 0; i < fitness.size(); ++i)
+    {
         fitness[i] = evaluate_solution(func_num, population[i]);
+    }
 
     best = FindBestSolution();
 }
@@ -50,30 +65,20 @@ double harmonySearch::evaluate_solution(int func_num, const solution& sol)
     switch(func_num)
     {
         case 1:
-            {
-                rtrn = shifted_Sphere_func(sol);
-                break;
-            }
+            rtrn = shifted_Sphere_func(sol);
+            break;
         case 2:
-            {
-                rtrn = shifted_Rastrigin_func(sol);
-                break;
-            }
+            rtrn = shifted_Rastrigin_func(sol);
+            break;
         case 3:
-            {
-                rtrn = shifted_Griewank_func(sol);
-                break;
-            }
+            rtrn = shifted_Griewank_func(sol);
+            break;
         case 4:
-            {
-                rtrn = shifted_Rosenbrock_func(sol);
-                break;
-            }
+            rtrn = shifted_Rosenbrock_func(sol);
+            break;
         default:
-            {
-                cerr << "ERROR: evaluate_solution: func_num is not defined" << endl;
-                break;
-            }
+            cerr << "ERROR: evaluate_solution: func_num is not defined" << endl;
+            break;
     }
     return rtrn;
 }
@@ -88,22 +93,12 @@ double harmonySearch::mute()
     return generate_random_double(dna_range[0], dna_range[1]);
 }
 
-int harmonySearch::FindWorstSolution()
-{
-    int worst = 0 ;
-    for(unsigned i = 1; i< fitness.size(); ++i)
-    {
-        if(fitness[worst] < fitness[i])
-            worst = i;
-    }
-    return worst ;
-}
-
 void harmonySearch::run(int func_num)
 {
     population = GenerateRandomPop();
-    evaluate_pop(func_num); // marche valeur trop grand
+    evaluate_pop(func_num);
 
+    CA = false;
     unsigned i = 0;
     while(i < total_func_evals && !CA)
     {
@@ -135,17 +130,49 @@ void harmonySearch::run(int func_num)
 
         ++i;
     }
+
     save(func_num);
 }
 
 void harmonySearch::solve(int func_num)
 {
     cout << "function #" << func_num << endl;
+
+    changeDNARange(func_num);
+
     for(nbIterations = 0; nbIterations < nbIterationsTotales; ++nbIterations)
     {
         cout << "iteration #" << nbIterations+1 << " in progress..." << endl;
         run(func_num);
         cout << "iteration done." << endl;
+    }
+}
+
+void harmonySearch::changeDNARange(int func_num)
+{
+    switch(func_num)
+    {
+        case 1: // shifted_Sphere_func
+            dna_range[0] = -100;
+            dna_range[1] = 100;
+            break;
+        case 2: // shifted_Rastrigin_func
+            dna_range[0] = -5;
+            dna_range[1] = 5;
+            break;
+        case 3: // shifted_Griewank_func
+            dna_range[0] = -600;
+            dna_range[1] = 600;
+            break;
+        case 4: // shifted_Rosenbrock_func
+            dna_range[0] = -100;
+            dna_range[1] = 100;
+            break;
+        default:
+            dna_range[0] = 1;
+            dna_range[1] = 1;
+            cerr << "ERROR: changeDNARange: func_num is not defined" << endl;
+            break;
     }
 }
 
@@ -156,31 +183,21 @@ void harmonySearch::save(int func_num) const
     switch(func_num)
     {
         case 1:
-            {
-                fileName += "shifted_Sphere_func";
-                break;
-            }
+            fileName += "shifted_Sphere_func";
+            break;
         case 2:
-            {
-                fileName += "shifted_Rastrigin_func";
-                break;
-            }
+            fileName += "shifted_Rastrigin_func";
+            break;
         case 3:
-            {
-                fileName += "shifted_Griewank_func";
-                break;
-            }
+            fileName += "shifted_Griewank_func";
+            break;
         case 4:
-            {
-                fileName += "shifted_Rosenbrock_func";
-                break;
-            }
+            fileName += "shifted_Rosenbrock_func";
+            break;
         default:
-            {
-                cerr << "ERROR: save: func_num is not defined" << endl;
-                fileName += "errorSAVE";
-                break;
-            }
+            cerr << "ERROR: save: func_num is not defined" << endl;
+            fileName += "errorSAVE";
+            break;
     }
 
     fileName += extension;
@@ -200,7 +217,7 @@ void harmonySearch::saveIn(const string& fileName) const
     {
         string toSave = to_string(fitness[best]);
 
-        ofs << nbIterations+1 << " : " << toSave << endl;
+        ofs << setw(2) << nbIterations+1 << " : " << toSave << endl;
     }
 }
 

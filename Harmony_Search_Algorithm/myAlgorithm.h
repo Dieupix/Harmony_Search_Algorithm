@@ -33,6 +33,7 @@ public:
     int FindWorstSolution(); ///@TODO : [Meriem] cherche la pire solution dans fitness (a utiliser : UpdatePopulation())
     void run(int func_num); ///@TODO : [les 4] l'algo en soit
 
+    void changeDNARange(int);
     void save(int) const; ///@TODO : Alex : sauvegarde la meilleure fitness dans un fichier suivant la fonction utilisée
     void saveIn(const string&) const; ///@TODO : Alex : sauvegarde la meilleure fitness dans un fichier
 
