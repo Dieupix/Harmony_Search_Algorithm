@@ -12,7 +12,7 @@ protected:
     int HMS = pop_size; //nombre d'harmonies de la population
     int n = dimension; //nombre de frequences dans une harmonie
     double HMCR; //taux de consideration de l'harmonie
-    double critere = pow(10,-16);
+    double critere = 0.0000000000000001; // 10^-16
     bool CA = false; //critère d'arret f(x) < 10^-16
     double PAR; //taux de réglage de la hauteur, la probabilite de modifier la frequence selectionnee
     unsigned nbIterations = 0; //nombre d'iterations deja effectuees
@@ -38,7 +38,6 @@ public:
     double shifted_Rosenbrock_func  (const solution& x);
 
     void changeDNARange(int);
-    void changeFBias(int);
     void save(int) const; ///@TODO : Alex : sauvegarde la meilleure fitness dans un fichier suivant la fonction utilisée
     void saveIn(const string&) const; ///@TODO : Alex : sauvegarde la meilleure fitness dans un fichier
 
