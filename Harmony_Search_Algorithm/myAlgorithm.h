@@ -2,7 +2,6 @@
 #define _MYALGO_OPT_
 
 #include "OptUHA.h"
-#include "objective_func.h"
 
 #include <cmath>
 #include <fstream>
@@ -32,6 +31,11 @@ public:
     //Ce qu'on a ajoute
     int FindWorstSolution(); ///@TODO : [Meriem] cherche la pire solution dans fitness (a utiliser : UpdatePopulation())
     void run(int func_num); ///@TODO : [les 4] l'algo en soit
+
+    double shifted_Sphere_func      (const solution& x);
+    double shifted_Rastrigin_func   (const solution& x);
+    double shifted_Griewank_func    (const solution& x);
+    double shifted_Rosenbrock_func  (const solution& x);
 
     void changeDNARange(int);
     void changeFBias(int);

@@ -63,19 +63,24 @@ void harmonySearch::evaluate_pop(int func_num)
 double harmonySearch::evaluate_solution(int func_num, const solution& sol)
 {
     double rtrn = 0;
+    double f_bias = 0;
     switch(func_num)
     {
         case 1:
-            rtrn = shifted_Sphere_func(sol);
+            f_bias = -450;
+            rtrn = shifted_Sphere_func(sol) + f_bias;
             break;
         case 2:
-            rtrn = shifted_Rastrigin_func(sol);
+            f_bias = -330;
+            rtrn = shifted_Rastrigin_func(sol) + f_bias;
             break;
         case 3:
-            rtrn = shifted_Griewank_func(sol);
+            f_bias = -180;
+            rtrn = shifted_Griewank_func(sol) + f_bias;
             break;
         case 4:
-            rtrn = shifted_Rosenbrock_func(sol);
+            f_bias = 390;
+            rtrn = shifted_Rosenbrock_func(sol) + f_bias;
             break;
         default:
             cerr << "ERROR: evaluate_solution: func_num is not defined" << endl;
@@ -120,7 +125,6 @@ void harmonySearch::run(int func_num)
 
         double fX = evaluate_solution(func_num, X);
 
-        CA = abs(fX) < critere;
         if(CA) cout << "CA atteint!" << endl;
 
         if(fX < fitness[worst])
@@ -221,3 +225,91 @@ void harmonySearch::saveIn(const string& fileName) const
     }
 }
 
+double harmonySearch::shifted_Sphere_func(const solution& x)
+{
+    double res = 0 ;
+    double z = 0;
+
+    for(unsigned i = 0; i < x.size(); ++i)
+    {
+        z = x[i] - 0;
+        res += z * z;
+    }
+
+    if(res < critere)
+    {
+        res = 0;
+        CA = true;
+    }
+
+    return res;
+}
+
+double harmonySearch::shifted_Rastrigin_func(const solution& x)
+{
+    double res = 0;
+    double z = 0;
+
+    for(unsigned i = 0; i < x.size(); ++i)
+    {
+        z = x[i] - 0;
+        res += (z * z) - 10 * cos(2 * M_PI * z) + 10;
+    }
+
+    if(res < critere)
+    {
+        res = 0;
+        CA = true;
+    }
+
+    return res;
+}
+
+double harmonySearch::shifted_Griewank_func(const solution& x)
+{
+    double sum = 0;
+    double product = 1;
+    double z = 0;
+
+    for(unsigned i = 0; i < x.size(); ++i)
+    {
+        z = x[i] - 0;
+        sum += (z * z) / 4000;
+        product *= cos(z / sqrt(i+1));
+    }
+
+    double res = sum - product + 1;
+
+    if(res < critere)
+    {
+        res = 0;
+        CA = true;
+    }
+
+    return res;
+}
+
+double harmonySearch::shifted_Rosenbrock_func(const solution& x)
+{
+    double res = 0;
+    double z = 0, z1 = 0;
+
+    for(unsigned i = 0; i < x.size()-1; ++i)
+    {
+        z = x[i] - 0 + 1;
+        z1 = x[i+1] - 0 + 1;
+
+        auto sq = ((z * z) - z1) * ((z * z) - z1);
+        auto sq1 = (z-1) * (z-1);
+
+        res += 100 * sq + sq1;
+    }
+
+    if(res < critere)
+    {
+        res = 0;
+        CA = true;
+    }
+
+    return res;
+}
